@@ -95,6 +95,12 @@ body {
   height: 0px;
 }
 
+::selection {
+  background-color: purple;
+  color: white; /* text color when selected */
+}
+
+
 /* Hide scrollbar for IE, Edge and Firefox */
 html {
   -ms-overflow-style: none;  /* IE and Edge */
