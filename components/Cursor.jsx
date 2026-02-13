@@ -100,7 +100,9 @@ export default function Cursor() {
         willChange: "transform",
       }}
     >
-      <div className="w-2 h-2 rounded-full bg-white"></div>
+      <div className="w-4 h-4 rounded-full flex justify-center items-center border border-white">
+        <div className="h-1 w-1 bg-white rounded-full"></div>
+      </div>
     </div>
   );
 }
