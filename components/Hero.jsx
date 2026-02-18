@@ -62,7 +62,7 @@ export default function Hero() {
 
     // Lines for the p text
     const pLines = [
-        "Designing branding materials and advertising ",
+        "- Designing branding materials and advertising ",
         "visuals, with a sharp focus on social media and YouTube ",
         "thumbnails that actually convert"
     ];
@@ -71,7 +71,7 @@ export default function Hero() {
     const h1Lines = [
         { content: "Design", className: "" },
         { content: <><span className='font-semibold'>That Grows </span></>, className: "" },
-        { content: <><span className=""><span>Audiences</span></span></>, className: "" }
+        { content: <><span className="font-poly italic font-semibold"><span>Audiences</span></span></>, className: "" }
     ];
 
     return (
@@ -94,7 +94,7 @@ export default function Hero() {
                             <motion.span
                                 key={index}
                                 variants={lineVariants}
-                                className={index === 0 ? "block indent-14" : "block"} // Indent only the first line
+                                className={index === 0 ? "block indent-11" : "block"} // Indent only the first line
                             >
                                 {line}
                             </motion.span>
