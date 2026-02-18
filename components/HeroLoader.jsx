@@ -27,10 +27,8 @@ export default function HeroLoader({ onComplete }) {
         };
     }, [onComplete]);
 
-    // Text to display - legacy, fire-themed
+    
     const text = "You've Got the idea";
-
-    // Variants for the text reveal - appear from bottom to top as a whole
     const textVariants = {
         hidden: {
             opacity: 0,
@@ -118,7 +116,7 @@ export default function HeroLoader({ onComplete }) {
                             initial="hidden"
                             animate={textRevealed ? "visible" : "hidden"}
                             className='w-25 h-8 uppercase text-xs rounded-full cursor-pointer underline underline-offset-2 text-black'>
-                            I got
+                            I've Got
                         </motion.button>
                     </div>
                     <div className="relative w-full flex items-center justify-center">

@@ -7,6 +7,7 @@ import Hero from "@/components/Hero";
 import ScrollIndicator from "@/components/ScrollIndicator";
 import HeroLoader from "@/components/HeroLoader";
 import Nav from "../components/Navbar_var2"
+import Whoami from "../components/Whoami"
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,9 +21,9 @@ export default function Home() {
       <HeroLoader onComplete={handleLoadingComplete} />
       {!isLoading && (
         <>
-          {/* <Navbar /> */}
           <Nav/>
           <Hero />
+          <Whoami/>
           <ScrollIndicator />
         </>
       )}

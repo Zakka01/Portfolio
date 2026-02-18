@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion';
+import { motion, stagger } from 'framer-motion';
 import GradualBlur from './GradualBlur';
+import Image from 'next/image';
 
 export default function Hero() {
 
@@ -41,6 +42,23 @@ export default function Hero() {
             },
         },
     };
+    
+    const btnVariants = {
+        hidden: {
+            opacity: 0,
+            y: 25, // Appear from bottom
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 1.2,
+                ease: [0.86, 0.0, 0.07, 1.0],
+                staggerChildren: 0.02, // Stagger each line
+                delayChildren: 3,
+            },
+        },
+    };
 
     // Lines for the p text
     const pLines = [
@@ -51,9 +69,9 @@ export default function Hero() {
 
     // Lines for the h1 text (preserving spans)
     const h1Lines = [
-        { content: "Designing", className: "" },
-        { content: <><span className='font-semibold'>clarity</span> <span className="text-neutral-500">in</span></>, className: "" },
-        { content: <><span className="text-neutral-500"><span>noisy spaces</span></span></>, className: "" }
+        { content: "Design", className: "" },
+        { content: <><span className='font-semibold'>That Grows </span></>, className: "" },
+        { content: <><span className=""><span>Audiences</span></span></>, className: "" }
     ];
 
     return (
@@ -65,9 +83,9 @@ export default function Hero() {
             </div>
 
             <div className='w-full h-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-6 relative top-12 sm:top-16 md:top-20 lg:top-24 xl:top-29'>
-                <div className='flex flex-row justify-end w-full h-full mb-4 sm:mb-6 md:mb-5'>
+                <div className='flex flex-row justify-end w-full h-full mb-4 sm:mb-6 md:mb-7'>
                     <motion.div
-                        className='text-[0.5rem] sm:text-[0.55rem] md:text-[0.6rem] lg:text-[0.55rem] text-left font-mono uppercase text-neutral-400 leading-relaxed'
+                        className='text-[0.5rem] sm:text-[0.55rem] md:text-[0.6rem] lg:text-[0.52rem] text-left font-mono uppercase text-neutral-400 leading-relaxed'
                         variants={pContainerVariants}
                         initial="hidden"
                         animate="visible"
@@ -83,9 +101,9 @@ export default function Hero() {
                         ))}
                     </motion.div>
                 </div>
-                <div className="flex flex-col md:flex-row items-start md:items-end justify-start max-w-[1920px] mx-auto">
+                <div className="flex flex-row md:flex-row items-start md:items-end justify-between max-w-[1920px] mx-auto">
                     <motion.div
-                        className="cursor-default font-medium text-[2.5rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[7rem] xl:text-[10rem] 2xl:text-[9rem] text-neutral-100 mix-blend-difference tracking-tight leading-[1.1] sm:leading-[1.15] md:leading-[0.85]"
+                        className="cursor-default font-medium text-[2.5rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[7rem] xl:text-[10rem] 2xl:text-[9rem] text-neutral-300 mix-blend-difference tracking-tight leading-[1.1] sm:leading-[1.15] md:leading-[0.85]"
                         variants={h1ContainerVariants}
                         initial="hidden"
                         animate="visible"
@@ -100,9 +118,31 @@ export default function Hero() {
                             </motion.span>
                         ))}
                     </motion.div>
-                    {/* <button className='absolute cursor-pointer font-mono uppercase flex justify-center items-center left-[55%] bottom-30 h-30 w-30 rounded-full border border-neutral-400 text-neutral-400 mix-blend-difference overflow-hidden'>
-                        Let's level up
-                    </button>  */}
+                    <motion.div
+                        variants={btnVariants}
+                        initial="hidden"
+                        animate="visible"
+                        className="flex flex-col justify-center items-center gap-1 mb-5 mr-25 z-9999 text-neutral-400 font-mono tracking-wider"
+                    >
+                        <p className="text-[0.6rem]">SCROLL</p>
+
+                        <motion.div
+                            animate={{ y: [3, -2, 3] }}
+                            transition={{
+                                duration: 1.5,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                            }}
+                        >
+                            <Image
+                                src="/assets/right-arrow.png"
+                                width={10}
+                                height={10}
+                                alt=""
+                                className="opacity-50 rotate-90"
+                            />
+                        </motion.div>
+                    </motion.div>
                 </div>
 
                 <GradualBlur
