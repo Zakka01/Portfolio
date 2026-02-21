@@ -10,7 +10,7 @@ export default function Section2() {
                 <div className="grid grid-cols-2 w-full pl-10">
                     {/* text */}
                     <div className="text-white">
-                        <h1 className="text-4xl font-poly tracking-tight">
+                        <h1 className="text-4xl font-polysans-bulky tracking-tight">
                             I'am Ahrabare Zakariae
                         </h1>
                     </div>
