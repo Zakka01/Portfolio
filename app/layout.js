@@ -16,7 +16,21 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${polySans.variable} bg-black`}>
+    <html lang="en" className={`
+      ${geistSans.variable} 
+      ${geistMono.variable} 
+      ${polySansBulky.variable} 
+      ${polySansBulkyMono.variable} 
+      ${polySansBulkyWide.variable} 
+      ${polySansMedianMono.variable} 
+      ${polySansMedianWide.variable} 
+      ${polySansNeutral.variable} 
+      ${polySansNeutralMono.variable} 
+      ${polySansNeutralWide.variable} 
+      ${polySansSlim.variable} 
+      ${polySansSlimMono.variable} 
+      ${polySansSlimWide.variable} 
+      bg-black`}>
       <body className="antialiased">
         <LenisProvider>
           <Cursor />
