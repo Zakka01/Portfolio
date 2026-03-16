@@ -71,7 +71,7 @@ export default function Hero() {
     const h1Lines = [
         { content: "Design", className: "" },
         { content: <><span className=''>That Grows </span></>, className: "" },
-        { content: <><span className="font-poly xl:text-[11rem] leading-0.5 text-white"><span>Audiences</span></span></>, className: "" }
+        { content: <><span className="font-poly-neutral-wide-italic xl:text-[11rem] leading-0.5 text-neutral-200"><span>Audiences</span></span></>, className: "" }
     ];
 
     return (

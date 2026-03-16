@@ -41,10 +41,36 @@
 }
 
 
-.font-poly {
-  font-family: var(--font-polysans), sans-serif;
-  font-style: italic; /* since your font is italic */
-}
+.font-poly-bulky { font-family: var(--font-poly-bulky), sans-serif; }
+.font-poly-bulky-mono { font-family: var(--font-poly-bulky-mono), monospace; }
+.font-poly-bulky-wide { font-family: var(--font-poly-bulky-wide), sans-serif; }
+
+.font-poly-median-mono { font-family: var(--font-poly-median-mono), monospace; }
+.font-poly-median-wide { font-family: var(--font-poly-median-wide), sans-serif; }
+
+.font-poly-neutral { font-family: var(--font-poly-neutral), sans-serif; }
+.font-poly-neutral-mono { font-family: var(--font-poly-neutral-mono), monospace; }
+.font-poly-neutral-wide { font-family: var(--font-poly-neutral-wide), sans-serif; }
+
+.font-poly-slim { font-family: var(--font-poly-slim), sans-serif; }
+.font-poly-slim-mono { font-family: var(--font-poly-slim-mono), monospace; }
+.font-poly-slim-wide { font-family: var(--font-poly-slim-wide), sans-serif; }
+
+.font-poly-bulky-italic { font-family: var(--font-poly-bulky-italic), sans-serif; font-style: italic; }
+.font-poly-bulky-mono-italic { font-family: var(--font-poly-bulky-mono-italic), monospace; font-style: italic; }
+.font-poly-bulky-wide-italic { font-family: var(--font-poly-bulky-wide-italic), sans-serif; font-style: italic; }
+
+.font-poly-median-mono-italic { font-family: var(--font-poly-median-mono-italic), monospace; font-style: italic; }
+.font-poly-median-wide-italic { font-family: var(--font-poly-median-wide-italic), sans-serif; font-style: italic; }
+
+.font-poly-neutral-mono-italic { font-family: var(--font-poly-neutral-mono-italic), monospace; font-style: italic; }
+.font-poly-neutral-wide-italic { font-family: var(--font-poly-neutral-wide-italic), sans-serif; font-style: italic; }
+
+.font-poly-slim-italic { font-family: var(--font-poly-slim-italic), sans-serif; font-style: italic; }
+.font-poly-slim-mono-italic { font-family: var(--font-poly-slim-mono-italic), monospace; font-style: italic; }
+.font-poly-slim-wide-italic { font-family: var(--font-poly-slim-wide-italic), sans-serif; font-style: italic; }
+
+
 
 @theme inline {
   --color-background: var(--background);
