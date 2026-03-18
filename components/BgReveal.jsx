@@ -1,29 +1,37 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { forwardRef } from "react";
 
-export default function BgRevealSection({ children }) {
+const GlobalBgWipe = forwardRef(function GlobalBgWipe({ targetRef }, ref) {
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start center", "end center"], 
+  });
+
+  // white fill grows as you scroll into the section
+  const scaleY = useTransform(scrollYProgress, [0, 0.35], [0, 1]);
+  const shadowY = useTransform(scrollYProgress, [0, 0.35], [80, -40]);
+  const shadowScale = useTransform(scrollYProgress, [0, 0.35], [0.4, 4.5]);
+
   return (
-    <section className="relative w-screen min-h-screen bg-black overflow-hidden">
-      {/* solid white reveal */}
-      {/* <motion.div
-        className="absolute inset-0 bg-white origin-bottom"
-        initial={{ scaleY: 0 }}
-        whileInView={{ scaleY: 1 }}
-        viewport={{ once: false, amount: 0.1 }}
-        transition={{ duration: 1.2, ease: [0.86, 0.0, 0.07, 1.0] }}
-      /> */}
+    <>
+      {/* base black */}
+      <div className="fixed inset-0 bg-black -z-20" />
 
-      {/* blurred edge */}
+      {/* white wipe */}
       <motion.div
-        className="absolute left-0 right-0 bottom-0 h-40 bg-white blur-2xl opacity-80"
-        initial={{ y: 80, scaleY: 0.2 }}
-        whileInView={{ y: -0, scaleY: 4.5 }}
-        viewport={{ once: false, amount: 0 }}
-        transition={{ duration: 1.2, ease: [0.86, 0.0, 0.07, 1.0] }}
+        className="fixed inset-0 bg-white origin-bottom -z-10"
+        style={{ scaleY }}
       />
 
-      <div className="relative z-10">{children}</div>
-    </section>
+      {/* blurred shadow edge */}
+      <motion.div
+        className="fixed left-0 right-0 bottom-0 h-40 bg-white blur-3xl opacity-80 -z-10"
+        style={{ y: shadowY, scaleY: shadowScale }}
+      />
+    </>
   );
-}
+});
+
+export default GlobalBgWipe;

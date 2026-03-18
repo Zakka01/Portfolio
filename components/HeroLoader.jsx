@@ -47,8 +47,8 @@ export default function HeroLoader({ onComplete }) {
         <p className="text-[2.5rem] font-poly-median font-semibold tracking-tighter leading-8">
           Zakariae Ahrabare
         </p>
-        <p className="text-[2.5rem] indent-12 font-poly-median font-semibold tracking-tighter leading-8">
-          Portfolio ©2026
+        <p className="text-[2.5rem] indent-2 font-poly-median font-semibold tracking-tighter leading-8">
+        — Portfolio ©2026
         </p>
       </div>
 

@@ -78,7 +78,7 @@ export default function Hero() {
         <section className="h-screen w-full select-none bg-black flex flex-col">
             <div className="fixed inset-0 grid grid-cols-5 pointer-events-none z-90">
                 {Array.from({ length: 5 }).map((_, i) => (
-                    <div key={i} className="border-l border-dashed border-neutral-800/80"></div>
+                    <div key={i} className="border-l border-dashed border-neutral-800/60"></div>
                 ))}
             </div>
 

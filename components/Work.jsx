@@ -70,7 +70,7 @@ export default function Section2() {
                             src={items[0].src}
                             fill
                             alt=""
-                            className="object-cover group-hover:scale-102 group-hover:grayscale-0 group-hover:brightness-85 duration-700"
+                            className="object-cover grayscale brightness-50 group-hover:scale-102 group-hover:grayscale-0 group-hover:brightness-85 duration-700"
                         />
                     </div>
 
@@ -89,7 +89,7 @@ export default function Section2() {
                             src={items[1].src}
                             fill
                             alt=""
-                            className="object-cover group-hover:scale-102 group-hover:grayscale-0 group-hover:brightness-85 duration-700"
+                            className="object-cover grayscale brightness-50 group-hover:scale-102 group-hover:grayscale-0 group-hover:brightness-85 duration-700"
                         />
                     </div>
                 </div>
@@ -111,7 +111,7 @@ export default function Section2() {
                             src={items[2].src}
                             fill
                             alt=""
-                            className="object-cover group-hover:scale-102 group-hover:grayscale-0 group-hover:brightness-85 duration-700"
+                            className="object-cover grayscale brightness-50 group-hover:scale-102 group-hover:grayscale-0 group-hover:brightness-85 duration-700"
                         />
                     </div>
 
@@ -130,7 +130,7 @@ export default function Section2() {
                             src={items[3].src}
                             fill
                             alt=""
-                            className="object-cover pr-5 scale-125 group-hover:scale-128 group-hover:grayscale-0 group-hover:brightness-85 duration-700"
+                            className="object-cover grayscale brightness-50 pr-5 scale-125 group-hover:scale-128 group-hover:grayscale-0 group-hover:brightness-85 duration-700"
                         />
                     </div>
                 </div>
