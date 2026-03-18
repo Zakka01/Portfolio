@@ -64,7 +64,7 @@ export default function RootLayout({ children }) {
         ${poly_slim_wide_italic.variable}
       bg-black
       `}>
-      <body className="antialiased">
+      <body className="antialiased bg-black text-white">
         <LenisProvider>
           <Cursor />
           {children}

@@ -76,7 +76,7 @@ export default function Hero() {
 
     return (
         <section className="h-screen w-full select-none bg-black flex flex-col">
-            <div className="fixed inset-0 grid grid-cols-5 pointer-events-none">
+            <div className="fixed inset-0 grid grid-cols-5 pointer-events-none z-90">
                 {Array.from({ length: 5 }).map((_, i) => (
                     <div key={i} className="border-l border-dashed border-neutral-800/80"></div>
                 ))}
@@ -131,7 +131,7 @@ export default function Hero() {
                 <GradualBlur
                     target="page"
                     position="bottom"
-                    height="8rem"
+                    height="6rem"
                     strength={1}
                     divCount={5}
                     curve="bezier"
@@ -141,7 +141,7 @@ export default function Hero() {
                 <GradualBlur
                     target="page"
                     position="top"
-                    height="8rem"
+                    height="6rem"
                     strength={1}
                     divCount={5}
                     curve="bezier"

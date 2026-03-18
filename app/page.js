@@ -9,6 +9,7 @@ import HeroLoader from "@/components/HeroLoader";
 import Nav from "../components/Navbar_var2"
 import Whoami from "../components/Whoami"
 import Work from "../components/Work"
+import Footer from "../components/Footer"
 import BgReveal from "../components/BgReveal"
 
 export default function Home() {
@@ -20,16 +21,18 @@ export default function Home() {
 
   return (
     <>
-      {/* <HeroLoader onComplete={handleLoadingComplete} /> */}
-      {/* {!isLoading && ( */}
-      <>
-        <Nav />
-        <Hero />
-        <Whoami />
-        <Work />
-        <ScrollIndicator />
-      </>
-      {/* )} */}
+      {isLoading && <HeroLoader onComplete={handleLoadingComplete} />}
+
+      {!isLoading && (
+        <>
+          <Nav />
+          <Hero />
+          <Whoami />
+          <Work />
+          <Footer/>
+          <ScrollIndicator />
+        </>
+      )}
     </>
   );
 }

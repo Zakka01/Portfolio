@@ -50,7 +50,7 @@ export default function ScrollIndicator() {
 
   return (
     <motion.div 
-      className="fixed right-0 top-1/2 -translate-y-1/2 z-0 pointer-events-none mix-blend-difference"
+      className="fixed right-0 top-1/2 -translate-y-1/2 z-200 pointer-events-none mix-blend-difference"
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 20 }}
       transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}

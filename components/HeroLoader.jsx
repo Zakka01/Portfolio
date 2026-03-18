@@ -1,156 +1,66 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from "react";
+import { motion, useMotionValue, animate } from "framer-motion";
 
 export default function HeroLoader({ onComplete }) {
-    const [isVisible, setIsVisible] = useState(true);
-    const [textRevealed, setTextRevealed] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [slideUp, setSlideUp] = useState(false);
 
-    useEffect(() => {
-        // Start reveal animation immediately - no waiting
-        const revealTimer = setTimeout(() => {
-            setTextRevealed(true);
-        }, 50);
+  const y = useMotionValue(150); // start below
 
-        // Complete loading and hide loader - optimized timing
-        const completeTimer = setTimeout(() => {
-            setIsVisible(false);
-            setTimeout(() => {
-                if (onComplete) onComplete();
-            }, 300); // Faster fade out
-        }, 3000); // Total duration: 2 seconds
+  useEffect(() => {
+    // move the number up smoothly (bottom -> top)
+    const controls = animate(y, 0, {
+      duration: 1.3,
+      ease: [0.86, 0.0, 0.07, 1.0],
+      onUpdate: (latest) => {
+        // map y position to steps
+        if (latest > 55) setProgress(0);
+        else if (latest > 35) setProgress(22);
+        else if (latest > 15) setProgress(77);
+        else setProgress(100);
+      },
+    });
 
-        return () => {
-            clearTimeout(revealTimer);
-            clearTimeout(completeTimer);
-        };
-    }, [onComplete]);
+    // slide whole loader up after count finishes
+    const finishTimer = setTimeout(() => {
+      setSlideUp(true);
+      setTimeout(() => onComplete?.(), 1100);
+    }, 2000);
 
-    
-    const text = "You've Got the idea";
-    const textVariants = {
-        hidden: {
-            opacity: 0,
-            y: 20, // Slide from bottom
-        },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 1.4, // Balanced duration
-                ease: [0.86, 0.0, 0.07, 1.07], // Perfect easing
-            },
-        },
+    return () => {
+      controls.stop();
+      clearTimeout(finishTimer);
     };
+  }, [onComplete, y]);
 
-    // Base variants for the buttons
-    const baseBtnVariants = {
-        hidden: {
-            opacity: 0,
-            y: 20, // Slide from bottom
-        },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 1.4, // Balanced duration
-                ease: [0.86, 0.0, 0.07, 1.07], // Perfect easing
-            },
-        },
-    };
+  return (
+    <motion.div
+      className="fixed inset-0 z-9999 overflow-hidden bg-white"
+      initial={{ y: 0 }}
+      animate={{ y: slideUp ? "-100%" : 0 }}
+      transition={{ duration: 1.2, ease: [0.86, 0.0, 0.07, 1.0] }}
+    >
+      {/* top text */}
+      <div className="absolute text-black w-full top-15 flex flex-col items-start gap-1 px-10 uppercase">
+        <p className="text-[2.5rem] font-poly-median font-semibold tracking-tighter leading-8">
+          Zakariae Ahrabare
+        </p>
+        <p className="text-[2.5rem] indent-12 font-poly-median font-semibold tracking-tighter leading-8">
+          Portfolio ©2026
+        </p>
+      </div>
 
-    // Variants for each button with delays
-    const firstBtnVariants = {
-        ...baseBtnVariants,
-        visible: {
-            ...baseBtnVariants.visible,
-            transition: {
-                ...baseBtnVariants.visible.transition,
-                delay: 0.5, // Delay for first button
-                duration: 0.9,
-                ease: [0.86, 0.0, 0.07, 1.0]
-            },
-        },
-    };
-    
-    const secondBtnVariants = {
-        ...baseBtnVariants,
-        visible: {
-            ...baseBtnVariants.visible,
-            transition: {
-                ...baseBtnVariants.visible.transition,
-                delay: 0.7, // Delay for second button
-                duration: 0.9,
-                ease: [0.86, 0.0, 0.07, 1.0]
-            },
-        },
-    };
-    
-    const thirdBtnVariants = {
-        ...baseBtnVariants,
-        visible: {
-            ...baseBtnVariants.visible,
-            transition: {
-                ...baseBtnVariants.visible.transition,
-                delay: 0.9, // Delay for third button
-                duration: 0.9,
-                ease: [0.86, 0.0, 0.07, 1.0]
-            },
-        },
-    };
-
-    return (
-        <AnimatePresence>
-            {isVisible && (
-                <motion.div
-                    className="fixed inset-0 bg-neutral-200 z-9999 grid grid-rows-5 select-none cursor-default"
-                    initial={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 1, ease: [0.86, 0.0, 0.07, 1.0] }}
-                >
-                    <div className=''></div>
-                    <div className='flex items-start pl-[10%]'>
-                        <motion.button
-                            variants={firstBtnVariants}
-                            initial="hidden"
-                            animate={textRevealed ? "visible" : "hidden"}
-                            className='w-25 h-8 uppercase text-xs rounded-full cursor-pointer underline underline-offset-2 text-black'>
-                            I've Got
-                        </motion.button>
-                    </div>
-                    <div className="relative w-full flex items-center justify-center">
-                        <motion.h1
-                            className="text-[3rem] sm:text-[4rem] md:text-[6rem] lg:text-[8rem] xl:text-[2.5rem] tracking-tight select-none text-center text-black"
-                            style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}
-                            variants={textVariants}
-                            initial="hidden"
-                            animate={textRevealed ? "visible" : "hidden"}
-                        >
-                            {text}
-                        </motion.h1>
-                    </div>
-                    <div className='flex justify-end pr-[10%]'>
-                        <motion.button
-                            variants={secondBtnVariants}
-                            initial="hidden"
-                            animate={textRevealed ? "visible" : "hidden"}
-                            className='w-25 h-8 uppercase text-xs mt-10 rounded-full cursor-pointer underline underline-offset-2 text-black'>
-                            the
-                        </motion.button>
-                    </div>
-                    <div className='flex justify-start pl-[20%]'>
-                        <motion.button
-                            variants={thirdBtnVariants}
-                            initial="hidden"
-                            animate={textRevealed ? "visible" : "hidden"}
-                            className='w-25 h-8 uppercase text-xs rounded-full cursor-pointer underline underline-offset-2 text-black'>
-                            Skills
-                        </motion.button>
-                    </div>
-
-                </motion.div>
-            )}
-        </AnimatePresence>
-    );
+      {/* percentage (moves up via translate-y) */}
+      <div className="absolute text-black w-full bottom-9 flex items-end justify-end font-poly-neutral px-10">
+        <motion.div
+          style={{ y }}
+          className="text-[8rem] leading-none"
+        >
+          {progress}
+        </motion.div>
+      </div>
+    </motion.div>
+  );
 }
